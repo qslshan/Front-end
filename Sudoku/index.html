@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<div id="test-div">
+    <ul>
+        <li><span>JavaScript</span></li>
+        <li><span>Python</span></li>
+        <li><span>Swift</span></li>
+    </ul>
+</div>
+<a id='test-link' href="#0">click me</a>
+
+<script>
+
+    var t=_,map([1,2,3],(x)=>x*x);
+    alert(t);
+    var a1=[1,4,9,16];
+    var a2=a1.map(Math.sqrt);
+    var a3=a2.filter((x)=>{
+        return x%2===0
+    });
+    alert(a2);
+    alert(a3);
+
+    function printTime() {
+        alert("it is a time!")
+
+    }
+    setTimeout(printTime,4000);
+    console.log("done");
+    var ul=$('#test-div>ul ');
+    ul.append('<li><span>Haskell</span></li>');
+    //添加DOM对象
+    var ps=document.createElement('li');
+    ps.innerHTML='<span>Passcal</span>';
+    ul.append(ps);
+    //添加jQuery对象
+    ul.append($('#scheme'));
+    //添加函数对象
+    ul.append(function (index,html) {
+        return '<li><span>Language-'+index+'</span></li>'
+
+    });
+//    var li=ul.find('li');
+//    ul.append(li.sort(function (x,y) {
+//        let xtext=$(x).find('span').text();
+//        let ytext=$(y).find('span').text();
+//        if (xtext<ytext){
+//            return -1
+//        }else if(xtext>ytext){
+//            return 1;
+//        }
+//
+//    }))
+
+var arr=['Pascall','Lua','Ruby'];
+var lis=ul.find('li');
+var ars=lis.map(function () {
+    return this.innerText
+}).get().concat(arr).sort();
+console.log(ars);
+lis.remove();
+for(let a in ars){
+    ul.append('<li><span>'+ars[a]+'</span></li>');
+}
+
+var a=$('#test-link');
+    a.click(function(){
+        alert("Hello qslshan!");
+    });
+
+    function hello() {
+    alert('hello!');
+}
+
+a.click(hello); // 绑定事件
+
+// 10秒钟后解除绑定:
+setTimeout(function () {
+    a.off('click', hello);
+}, 10000);
+
+</script>
+
+</body>
+</html>
